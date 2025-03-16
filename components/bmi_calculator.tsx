@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
+
 interface BMICalculatorProps {
     weight: number;
     height: number;
@@ -6,8 +7,6 @@ interface BMICalculatorProps {
 }
 
 function BMICalculator({ weight, height, onBMICalculated }: BMICalculatorProps) {
-  const [bmi, setBmi] = useState(0);
-
   useEffect(() => {
     if (weight && height) {
       // Convert height from cm to meters
@@ -17,7 +16,6 @@ function BMICalculator({ weight, height, onBMICalculated }: BMICalculatorProps) 
       // Round to 1 decimal place
       const roundedBMI = Math.round(calculatedBMI * 10) / 10;
       
-      setBmi(roundedBMI);
       onBMICalculated(roundedBMI);
     }
   }, [weight, height, onBMICalculated]);
